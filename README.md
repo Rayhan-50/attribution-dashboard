@@ -97,3 +97,58 @@ src/
 - **Build**: `npm run build`
 - **Start**: `npm start`
 - **Lint**: `npm run lint`
+
+
+
+
+$ curl -X POST http://localhost:3000/track/install \
+-H "Content-Type: application/json" \
+-d '{
+  "device_id": "device789",
+  "click_id": "a22c2367-7bee-4261-b591-5f558ed35d33",
+  "os_version": "iOS 14.6",
+  "device_model": "iPhone12,1",
+  "bundle_id": "com.example.app"
+}'
+{"status":"success","data":{"install_id":"1c71d3ec-b6ea-4d1b-9091-4684e0977139","device_id":"device789","click_id":"a22c2367-7bee-4261-b591-5f558ed35d33","timestamp":"2025-07-06T20:45:37.053Z","campaign_id":null,"ad_network":null,"attribution_type":null}}
+2024@DESKTOP-BUC7EA3 MINGW64 ~/Desktop/Mobile-app-Platform/attribution-platform/attribution-platform/backend/attribution-backend (main)
+$ curl -X POST http://localhost:3000/track/install \
+-H "Content-Type: application/json" \
+-d '{
+  "device_id": "device789",
+  "click_id": "a22c2367-7bee-4261-b591-5f558ed35d33",
+  "os_version": "iOS 14.6",
+  "device_model": "iPhone12,1",
+  "bundle_id": "com.example.app",
+  "campaign_id": "camp456",
+}'"attribution_type": "click"
+{"status":"success","data":{"install_id":"b6c0a675-0269-447e-99f7-685adf64204d","device_id":"device789","click_id":"a22c2367-7bee-4261-b591-5f558ed35d33","timestamp":"2025-07-06T20:50:41.391Z","campaign_id":"camp456","ad_network":"network1","attribution_type":"click"}}
+2024@DESKTOP-BUC7EA3 MINGW64 ~/Desktop/Mobile-app-Platform/attribution-platform/attribution-platform/backend/attribution-backend (main)
+$ curl -X POST http://localhost:3000/track/install \
+-H "Content-Type: application/json" \
+-d '{
+  "device_id": "device789",
+  "click_id": "a22c2367-7bee-4261-b591-5f558ed35d33",
+  "os_version": "iOS 14.6",
+  "device_model": "iPhone12,1",
+  "bundle_id": "com.example.app",
+  "campaign_id": "camp456",
+}'"attribution_type": "click"
+{"status":"success","data":{"install_id":"4cdb4d3e-f52d-40c6-8ad5-eb9c02558a0d","device_id":"device789","click_id":"a22c2367-7bee-4261-b591-5f558ed35d33","timestamp":"2025-07-06T20:53:29.696Z","campaign_id":"camp456","ad_network":"network1","attribution_type":"click"}}
+2024@DESKTOP-BUC7EA3 MINGW64 ~/Desktop/Mobile-app-Platform/attribution-platform/attribution-platform/backend/attribution-backend (main)
+$ curl -X POST http://localhost:3000/track/click \
+-H "Content-Type: application/json" \
+-d '{
+  "fingerprint": "abc123",
+  "campaign_id": "camp456",
+  "ad_network": "network1",
+  "device_id": "device789",
+  "ip": "192.168.1.1",
+  "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safa}'"referrer": "https://example.com"
+{"status":"success","data":{"click_id":"c736411a-94f0-4420-9b06-16c14f75f5da","fingerprint":"abc123","campaign_id":"camp456","ad_network":"networkion/14.1.1 Mobile/15E148 Safari/604.1","referrer":"https://example.com","timestamp":"2025-07-06T20:55:43.289Z"}}
+2024@DESKTOP-BUC7EA3 MINGW64 ~/Desktop/Mobile-app-Platform/attribution-platform/attribution-platform/backend/attribution-backend (main)
+$
+
+
+
+
