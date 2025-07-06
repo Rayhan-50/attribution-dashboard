@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { StatsOverview } from '../components/dashboard/StatsOverview';
+import { ChartsSection } from '../components/dashboard/ChartsSection';
 import { ClicksTable } from '../components/dashboard/ClicksTable';
 import { InstallsTable } from '../components/dashboard/InstallsTable';
 import { RefreshButton } from '../components/dashboard/RefreshButton';
@@ -34,10 +35,15 @@ export default function Dashboard() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto w-full px-2 sm:px-6 lg:px-8 py-8">
         {/* Stats Overview */}
         <div key={`stats-${refreshKey}`}>
           <StatsOverview />
+        </div>
+
+        {/* Charts Section */}
+        <div key={`charts-${refreshKey}`}>
+          <ChartsSection />
         </div>
 
         {/* Data Tables */}
