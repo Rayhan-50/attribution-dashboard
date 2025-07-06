@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Attribution Dashboard
+
+A modern, responsive Next.js dashboard for tracking and analyzing mobile app attribution data.
+
+## Features
+
+- **Real-time Statistics**: View total clicks, installs, and conversion rates
+- **Click Data Table**: Detailed view of all click events with campaign and device information
+- **Install Data Table**: Complete install tracking data with attribution details
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Auto-refresh**: Manual refresh button to update data
+- **Error Handling**: Graceful error handling with retry functionality
+- **Loading States**: Smooth loading indicators for better UX
+
+## API Endpoints
+
+The dashboard connects to the following backend endpoints:
+
+- `GET /track/stats` - Get summary statistics
+- `GET /track/clicks` - Get all click data
+- `GET /track/installs` - Get all install data
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser**:
+   Navigate to [http://localhost:3001](http://localhost:3001)
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout
+│   ├── page.tsx           # Main dashboard page
+│   └── globals.css        # Global styles
+├── components/
+│   ├── dashboard/         # Dashboard-specific components
+│   │   ├── StatsOverview.tsx
+│   │   ├── ClicksTable.tsx
+│   │   ├── InstallsTable.tsx
+│   │   └── RefreshButton.tsx
+│   └── ui/               # Reusable UI components
+│       ├── StatCard.tsx
+│       ├── DataTable.tsx
+│       ├── LoadingSpinner.tsx
+│       └── ErrorMessage.tsx
+└── lib/
+    ├── api.ts            # API utilities
+    └── types.ts          # TypeScript type definitions
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data Structure
 
-## Learn More
+### Click Data
+- `click_id`: Unique identifier
+- `campaign_id`: Campaign identifier
+- `ad_network`: Ad network name
+- `device_id`: Device identifier
+- `ip`: IP address
+- `timestamp`: Click timestamp
 
-To learn more about Next.js, take a look at the following resources:
+### Install Data
+- `install_id`: Unique identifier
+- `device_id`: Device identifier
+- `campaign_id`: Campaign identifier (if available)
+- `ad_network`: Ad network name (if available)
+- `attribution_type`: Attribution method
+- `timestamp`: Install timestamp
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React Hooks** - State management
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Build**: `npm run build`
+- **Start**: `npm start`
+- **Lint**: `npm run lint`
